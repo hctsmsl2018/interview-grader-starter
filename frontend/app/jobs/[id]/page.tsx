@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getJob } from "@/lib/api";
+import JobDetailClient from "./client";
 
 export default async function JobDetailPage({
   params,
@@ -36,7 +37,7 @@ export default async function JobDetailPage({
 
       <h1 className="text-xl font-semibold text-gray-900 mb-6">{job.title}</h1>
 
-      <div className="space-y-4">
+      <div className="space-y-4 mb-6">
         <div className="rounded-lg border border-gray-200 bg-white p-4">
           <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
             Prompt
@@ -48,9 +49,14 @@ export default async function JobDetailPage({
           <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
             Model Output
           </p>
-          <p className="text-sm text-gray-800">{job.model_output}</p>
+          <p className="text-sm text-gray-800 font-mono whitespace-pre-wrap">{job.model_output}</p>
         </div>
       </div>
+
+      <JobDetailClient
+        jobId={job.id}
+        initialReferenceOutput={job.reference_output}
+      />
     </div>
   );
 }

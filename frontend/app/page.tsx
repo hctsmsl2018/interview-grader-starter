@@ -6,8 +6,14 @@ export default async function HomePage() {
 
   return (
     <div>
-      <div className="mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <h1 className="text-xl font-semibold text-gray-900">Jobs</h1>
+        <Link
+          href="/graders"
+          className="text-sm px-3 py-1 rounded bg-blue-100 text-blue-700 hover:bg-blue-200"
+        >
+          Manage Graders
+        </Link>
       </div>
       {!jobs ? (
         <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
